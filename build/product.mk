@@ -88,6 +88,10 @@ PRODUCT_PACKAGES += \
     ssh-keygen \
     start-ssh \
 
+# Blur
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.launcher.blur.appLaunch=false
+
 # Gboard side padding
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.com.google.ime.kb_pad_port_l?=4 \
