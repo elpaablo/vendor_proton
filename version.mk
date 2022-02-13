@@ -12,7 +12,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-CUSTOM_ROM_VERSION := 12.2.1
+CUSTOM_BUILD_VERSION ?= Grus
+
+CUSTOM_ROM_VERSION := 12.2.1-$(CUSTOM_BUILD_VERSION)
 
 ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.build.version.custom=$(CUSTOM_ROM_VERSION)

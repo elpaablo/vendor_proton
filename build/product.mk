@@ -20,6 +20,7 @@ $(call inherit-product, vendor/proton/overlay/overlay.mk)
 #$(call inherit-product, vendor/proton/telephony/telephony.mk)
 $(call inherit-product, vendor/proton/audio/audio.mk)
 $(call inherit-product-if-exists, vendor/proton/signing/dev.mk)
+#$(call inherit-product, vendor/proton/build/qcom_boards.mk)
 
 # Flatten APEXs for performance
 OVERRIDE_TARGET_FLATTEN_APEX := true
@@ -87,9 +88,21 @@ PRODUCT_PACKAGES += \
     ssh-keygen \
     start-ssh \
 
+# Blur
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.launcher.blur.appLaunch=false
+
 # Gboard side padding
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.com.google.ime.kb_pad_port_l?=4 \
     ro.com.google.ime.kb_pad_port_r?=4 \
     ro.com.google.ime.kb_pad_land_l?=64 \
     ro.com.google.ime.kb_pad_land_r?=64 \
+
+# Navbar
+PRODUCT_PACKAGES += \
+    NavigationBarNoHintOverlay
+
+# PixelPropsUtils
+PRODUCT_COPY_FILES += \
+    vendor/proton/prebuilt/common/etc/pixel_2016_exclusive.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/pixel_2016_exclusive.xml
