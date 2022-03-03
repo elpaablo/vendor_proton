@@ -12,9 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-CUSTOM_BUILD_VERSION ?= Grus
+CUSTOM_BUILD_VERSION ?= proton-grus
 
-CUSTOM_ROM_VERSION := 12.2.1-$(CUSTOM_BUILD_VERSION)
+ifeq ($(WITH_GMS),true)
+    GVER := "-GAPPS"
+endif
+
+PROTON_VERSION ?= 12.2.1
+CUSTOM_ROM_VERSION := $(PROTON_VERSION)-$(CUSTOM_BUILD_VERSION)$(GVER)
 
 ADDITIONAL_SYSTEM_PROPERTIES += \
     ro.build.version.custom=$(CUSTOM_ROM_VERSION)
